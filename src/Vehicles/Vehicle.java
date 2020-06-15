@@ -11,8 +11,14 @@ public abstract class Vehicle {
 	protected List<Wheel> wheels = new ArrayList<Wheel>();
 
 	public Vehicle(String plate, String brand, String color) {
-		this.plate = plate;
+		
+//Una matrícula ha de tenir 4 números i dues o tres lletres.
+		
+		this.plate = new Utils().checkPlate(plate);
 		this.brand = brand;
 		this.color = color;
+		
 	}
+	
+	
 }

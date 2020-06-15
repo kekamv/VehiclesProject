@@ -25,9 +25,9 @@ public class VehiclesApp {
 	
 		
 //2) Crear el cotxe amb les dades anteriors. 
-
+				
 		Car Car1= new Car(Plate, Brand, Colour);
-		
+						
 		
 //3) Afegir-li dues rodes traseres demanant a l’usuari la marca i el diametre.
 
@@ -59,7 +59,7 @@ public class VehiclesApp {
 					+ "/nrun the program again");
 		}
 		
-		System.out.println(bwheels_Car1.size()); //esta línea es de control, relacionada con mi consulta al final del ejercicio
+		System.out.println("The size of the weehls list ist "+bwheels_Car1.size()); 
 		
 		
 //4) Afegir-li dues rodes davanteres demanant a l’usuari la marca i el diametre.
@@ -89,47 +89,7 @@ public class VehiclesApp {
 			System.out.println("Only identical pairs of wheels are allowed, please review your entry and "
 					+ "/nrun the program again");
 		}
-	
-	/*Jonatan, por favor resuélveme esta duda: si en la clase Car, método 
-	 * addTwoWheels(List<Wheel> wheels ) comento así
-	 * 
-		//this.wheels.add(leftWheel);
-		//this.wheels.add(rightWheel);
-	* 
-	*el resultado que obtengo al imprimir el tamaño de la arraylist es el mismo que si no comento esas líneas ¿??
-	*/
-	
-	/*A continuación incluyo una prueba con otros datos para simular el comportamiento del una matriz similar de String 
-	 * y obtengo los resultados esperados, el tamaño de la matriz es 4
-	*/
-		
-		// equivalente a List <Wheel>bwheels_Car1= new ArrayList<Wheel>();
-		List <String> pruebaWheels= new ArrayList<String>(); 
-		
-		
-		//equivalente a backWheel_Car1
-		String var1="lala";
-		
-		/*equivalente a 
-		 * bwheels_Car1.add(backWheel_Car1);
-		 * bwheels_Car1.add(backWheel_Car1);
-		 */
-		
-		pruebaWheels.add(var1);
-		pruebaWheels.add(var1);
-		
-		//aquí entraría en el método addTwoWheels(List<Wheel> wheels )
-		String rightWheel = pruebaWheels.get(0);
-		String leftWheel = pruebaWheels.get(1);
-
-		pruebaWheels.add(leftWheel);
-		pruebaWheels.add(rightWheel);
-		
-/*aquí el resultado es un array de 4 elementos, que es lo que esperaba encontrar si no comentase ninguna línea del método
- * addTwoWheels(List<Wheel> wheels )  
- */	
-		System.out.println(pruebaWheels); 
-		
+	scn.close();
 	}
 
 }
