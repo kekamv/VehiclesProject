@@ -1,5 +1,7 @@
 package Vehicles;
 
+import java.util.*;
+
 public class Utils {
 	
 	String checkPlate (String plate) {
@@ -27,19 +29,44 @@ public class Utils {
 					
 		}else {
 			
-			throw new IllegalArgumentException("The plate must include four numbers, three letters "+
-					"\nand no special characters");
+			throw new IllegalArgumentException("The plate must include four numbers, three letters and no special characters");
 		}
 	}	 
 	
-	double checkDiameter (double diameter) {
+	protected String requestDiameter() {	
+		
+		Scanner scn=new Scanner(System.in);
 
-		if (diameter >0.4 && diameter < 4) {
-			
-			return diameter;
-			
-		}else { throw new IllegalArgumentException("The diameter must be greater than 0.4 and smaller than 4");
-		}
+		System.out.println("Please enter the wheel's diameter, it must be greater than 0,4 and smaller than 4");
+		
+		String entryUser=scn.nextLine();
+		
+		return entryUser;
 	}
 
+	double setDiameter() {
+		
+		String entryUser="";
+		double diameter=0;
+		
+		requestDiameter();
+		
+		if(Double.valueOf(entryUser).isNaN()) {
+			
+			if(Double.valueOf(entryUser)<4) {
+				
+				if(Double.valueOf(entryUser)>0.4) {
+					
+				diameter=Double.valueOf(entryUser).doubleValue();
+					
+				}else {requestDiameter();	
+				}
+			}else {requestDiameter();	
+			}
+		}else{requestDiameter();
+		}	
+		return diameter;
+	}
+	
+	
 }

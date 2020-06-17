@@ -8,7 +8,7 @@ public class Wheel {
 		
 		//Un diametre de la roda ha de ser superior a 0.4 i inferior a 4
 		this.brand = brand;
-		this.diameter = new Utils().checkDiameter(diameter);
+		this.diameter = diameter;
 			
 	}
 	

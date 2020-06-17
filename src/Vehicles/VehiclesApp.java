@@ -5,91 +5,66 @@ import java.util.*;
 public class VehiclesApp {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-//Fase 1
-//1) Demanar a l’usuari la matrícula del cotxe, la marca i el seu color.
 
-		Scanner scn=new Scanner(System.in);
+		//User requested subclass and super class arg:plate, brand, color
+		String Product=""; String Plate=""; String Brand=""; String Colour="";
 		
-		System.out.println("Please enter your plate number");
+		Product= new Entries().enterType(Product);
+
+		Plate = new Entries().enterPlate(Plate);
 		
-		String Plate=scn.nextLine();
+		Brand = new Entries().enterBrand(Brand);
 		
-		System.out.println("Please enter the car's brand");
+		Colour = new Entries().enterColour(Colour);
 		
-		String Brand=scn.nextLine();
+		//Set up of back and front wheels
 		
-		System.out.println("Please enter the car's colour");
+		System.out.println("Plese enter the following back wheel's details");
+		System.out.println();
 		
-		String Colour=scn.nextLine();
-	
+		Wheel bwheel=null;
+		bwheel=new Entries().enterWheels();
+
+		System.out.println("Plese enter the following front wheel's details");
+		System.out.println();
 		
-//2) Crear el cotxe amb les dades anteriors. 
+		Wheel fwheel=null;
+		fwheel=new Entries().enterWheels();
+		
+		//Set up of vehicle w/wheels and downcasting to appropriate subclass
+		
+		Vehicle vehicle1=new Products().addProduct(Product, Plate, Brand, Colour);
+		
+		if (Product.equalsIgnoreCase("C")) {
+			Car vehicle1C= (Car)vehicle1;
+			
+			List <Wheel>bwheelsC= new ArrayList<Wheel>();
+			bwheelsC.add(bwheel);
+			bwheelsC.add(bwheel);
+			
+			List <Wheel>fwheelsC= new ArrayList<Wheel>();
+			fwheelsC.add(fwheel);
+			fwheelsC.add(fwheel);	
+			
+			try {
+				vehicle1C.addWheels(fwheelsC, bwheelsC);
+				System.out.print(vehicle1C.getCarDetails());
 				
-		Car Car1= new Car(Plate, Brand, Colour);
-						
-		
-//3) Afegir-li dues rodes traseres demanant a l’usuari la marca i el diametre.
+			} catch (Exception e) {
+				
+				System.out.println("Only identical pairs of wheels are allowed, please review your entry and "
+						+ "/nrun the program again");
+			}	
+				
+		}else if (Product.equalsIgnoreCase("B")) {
+			Bike vehicle1B= (Bike)vehicle1;
+			
+			vehicle1B.addWheels(fwheel, bwheel);
+			System.out.print(vehicle1B.getBikeDetails());	
 
-		System.out.println("Please enter the backwheel's brand");
-		
-		String Brand_back_Car1=scn.nextLine();
-		
-		System.out.println("Please enter the backwheel's diameter");
-		
-		double Diameter_Back_Car1=scn.nextDouble();
-		
-		scn.nextLine();
-		
-		Wheel backWheel_Car1= new Wheel(Brand_back_Car1, Diameter_Back_Car1);
-		
-		List <Wheel>bwheels_Car1= new ArrayList<Wheel>();
-		
-		bwheels_Car1.add(backWheel_Car1);
-		
-		bwheels_Car1.add(backWheel_Car1);
-		
-		try {
-			
-			Car1.addTwoWheels(bwheels_Car1);
-			
-		} catch (Exception e) {
-			
-			System.out.println("Only identical pairs of wheels are allowed, please review your entry and "
-					+ "/nrun the program again");
+		} else {
+			System.out.println("Unexpected error occurred");
 		}
 		
-		System.out.println("The size of the weehls list ist "+bwheels_Car1.size()); 
-		
-		
-//4) Afegir-li dues rodes davanteres demanant a l’usuari la marca i el diametre.
-		
-		System.out.println("Please enter the frontwheel's brand");
-		
-		String Brand_front_Car1=scn.nextLine();
-		
-		System.out.println("Please enter the frontwheel's diameter");
-		
-		double Diameter_front_Car1=scn.nextDouble();
-		
-		Wheel frontWheel_Car1= new Wheel(Brand_front_Car1, Diameter_front_Car1);
-		
-		List <Wheel>fwheels_Car1= new ArrayList<Wheel>();
-		
-		fwheels_Car1.add(frontWheel_Car1);
-		
-		fwheels_Car1.add(frontWheel_Car1);
-		
-		try {
-			
-			Car1.addTwoWheels(fwheels_Car1);
-			
-		} catch (Exception e) {
-			
-			System.out.println("Only identical pairs of wheels are allowed, please review your entry and "
-					+ "/nrun the program again");
-		}
-	scn.close();
 	}
-
 }

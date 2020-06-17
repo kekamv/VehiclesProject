@@ -25,10 +25,19 @@ public class Car extends Vehicle {
 
 		this.wheels.add(leftWheel);
 		this.wheels.add(rightWheel);
-		
-		for (Wheel w:wheels) {
-			System.out.println (w.getDetails());
-		}
 	}
+		
+	public String getCarDetails () {
 
+		return "The car was created with following settings: "+
+				"\nPlate: "+plate+
+				"\nBrand: "+brand+
+				"\nColour: "+color+
+				"\n"+wheels.size()+" wheels:"+
+				"\n"+"\t"+"left front weel: "+wheels.get(0).getDetails()+
+				"\n"+"\t"+"right front weel: "+wheels.get(1).getDetails()+
+				"\n"+"\t"+"left back weel: "+wheels.get(2).getDetails()+
+				"\n"+"\t"+"right back weel: "+wheels.get(3).getDetails();
+		
+	}
 }
